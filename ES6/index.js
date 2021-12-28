@@ -77,3 +77,55 @@
     a = "otra cosa"; //no funciona
     no se puede reasignar con const porque es constante, se especifica en ES6.
     */
+
+
+    //Arrows function, promesas y parametros en objeto
+    let name = 'Brayan';
+    let age = 26;
+
+    //Antes de ECMAScript6 asi se definian los objetos
+    obj = {name: name, age: age};
+
+    //CON ES6
+    obj2 = {name,age};
+
+    console.log(obj);
+
+    //Arrows function
+    const names = [
+        {name:'Brayan', age: 26},
+        {name:'Vannia', age: 22}
+    ];
+
+    //ES5
+    let listOfNames = names.map(function (item){
+        console.log(item.name);
+    });
+
+    //ES6
+    let listOfNames2 = names.map(item => console.log(item.name));
+
+    const listOfNames3 = (name, age, country) => {
+        ...
+    };
+
+    const listOfNames4 = name => {
+        ...
+    }
+
+    const square = num => num * num;
+
+    const helloPromise = () => {
+        return new Promise((resolve, reject) => {
+          if(true){
+             resolve('Heyy');
+            } else {
+                reject ('Cueck');
+          }
+        });
+    };
+
+    helloPromise()
+        .then(response => console.log(response))
+        .then(() => console.log('hola'))
+        .catch(error => console.log(error));

@@ -129,3 +129,57 @@
         .then(response => console.log(response))
         .then(() => console.log('hola'))
         .catch(error => console.log(error));
+
+
+/* CLASES, MODULOS Y GENERADORES */
+class Auto{
+    constructor(){
+        this.marca = '';
+        this.modelo = '';
+        this.ano = 0;
+        this.patente = '';
+    }
+
+    obtenerDatos(marca,modelo,ano,patente){
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.patente = patente;
+
+        return this.marca+" "+this.modelo+" "+this.ano+" "+this.patente;
+    }
+}
+
+const auto = new Auto();
+console.log(auto.obtenerDatos("Mercedes-Benz","C180","2018","GYBH28"));
+
+
+const dueno = require('./module');
+
+console.log(dueno());
+
+//Generator ES6 -> Funcion especial que retorna una serie de valores segun el algoritmo definido
+
+function* helloWorld(){
+    if(true){
+        //yield permite retornar algo
+        yield 'Hello, '; //guarda este estado de forma interna
+    }
+
+    if(true){
+        yield 'World';//tenemos el segundo elemento que va hacer llamado cuando sea ejecutado el siguiente valor
+    }
+};
+
+const generatorHello = helloWorld();
+
+//Podremos utilizar el valor next 
+// permite ejecutar la primera logica y obtener el valor segun sea el caso
+// y cuando vuelva a ejecutar el siguiente valor next va a recordar donde estaba
+// la asignacion logica  para mostrarme el segundo valor y asi por cada uno de estos pasos
+// que pueda tener la logica en el generator
+console.log(generatorHello.next().value);
+// lo usamos denuevo para obtener el siguiente valor
+console.log(generatorHello.next().value);
+//tercera vez para ver que sucede
+console.log(generatorHello.next().value);
